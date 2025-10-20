@@ -1,1 +1,30 @@
-<p>apps works!</p>
+<div class="apps-container">
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading-container">
+    <div class="spinner"></div>
+    <p>Carregando aplicativos...</p>
+  </div>
+
+  <!-- Apps List -->
+  <div *ngIf="!loading && apps.length > 1" class="apps-grid">
+    <div class="app-card" *ngFor="let app of apps" (click)="navigateToApp(app)">
+      <div class="app-icon">
+        <i class="fas fa-{{app.icon}}"></i>
+      </div>
+      <div class="app-info">
+        <h3>{{app.appName}}</h3>
+        <p>{{app.companyName}}</p>
+        <span class="app-status" [class.active]="app.ativo">
+          {{app.ativo ? 'Ativo' : 'Inativo'}}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- No Apps Message -->
+  <div *ngIf="!loading && apps.length === 0" class="no-apps">
+    <i class="fas fa-inbox"></i>
+    <h3>Nenhum aplicativo encontrado</h3>
+    <p>Não há aplicativos disponíveis para esta empresa.</p>
+  </div>
+</div>

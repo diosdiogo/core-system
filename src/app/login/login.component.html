@@ -1,9 +1,9 @@
-<mat-grid-list cols="3" rowHeight="2:3">
+<mat-grid-list cols="3" rowHeight="100vh" class="login-grid">
   <mat-grid-tile>
 
     <mat-card appearance="outlined">
       <mat-card-content>
-        <div class="card-form-login">
+        <form (ngSubmit)="onSubmit()" class="card-form-login">
           <img src="../../assets/logoLogin.png" alt="">
           <mat-form-field appearance="outline">
             <mat-label>E-mail</mat-label>
@@ -19,11 +19,16 @@
 
           <mat-form-field appearance="outline">
             <mat-label>Senha</mat-label>
-            <input matInput [type]="hide() ? 'password' : 'text'" required/>
+            <input
+              matInput
+              [type]="hide() ? 'password' : 'text'"
+              [formControl]="senha"
+              required
+            />
             <button
               mat-icon-button
               matSuffix
-              [formControl]="senha"
+              type="button"
               (click)="clickEvent($event)"
               [attr.aria-label]="'Hide password'"
               [attr.aria-pressed]="hide()"
@@ -31,11 +36,23 @@
               <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
           </mat-form-field>
-          <button mat-raised-button class="btn-primary">ENTRAR</button>
-        </div>
+
+          <div *ngIf="errorMessage()" class="error-message">
+            {{errorMessage()}}
+          </div>
+
+          <button
+            mat-raised-button
+            class="btn-primary"
+            type="submit"
+            [disabled]="isLoading() || email.invalid || senha.invalid"
+          >
+            <span *ngIf="!isLoading()">ENTRAR</span>
+            <span *ngIf="isLoading()">ENTRANDO...</span>
+          </button>
+        </form>
       </mat-card-content>
     </mat-card>
-
 
   </mat-grid-tile>
   <mat-grid-tile colspan="2">

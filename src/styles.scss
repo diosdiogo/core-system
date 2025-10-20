@@ -1,9 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .btn-primary{
   background-color: #005cbb !important;
   color: #fff !important;
+}
+
+// Remover barras de rolagem em toda a aplicação
+* {
+  box-sizing: border-box;
+}
+
+// Garantir que o grid do Material não cause overflow
+.mat-grid-list {
+  overflow: hidden !important;
+}
+
+.mat-grid-tile {
+  overflow: hidden !important;
 }

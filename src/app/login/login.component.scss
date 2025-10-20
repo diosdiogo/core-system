@@ -1,10 +1,47 @@
+.login-grid {
+  padding-bottom: calc(50% - 24.666667px) !important;
+}
+
 .img-login {
   height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
+
 .card-form-login {
   display: flex;
   flex-direction: column;
   img {
     margin-bottom: 15px;
   }
+}
+
+.error-message {
+  color: #f44336;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  padding: 0.5rem;
+  background-color: #ffebee;
+  border-radius: 4px;
+  border: 1px solid #ffcdd2;
+}
+
+// Remover barra de rolagem
+:host {
+  overflow: hidden;
+}
+
+mat-grid-list {
+  overflow: hidden;
+  height: 100vh;
+}
+
+mat-grid-tile {
+  overflow: hidden;
+}
+
+mat-card {
+  overflow: hidden;
+  height: 100%;
 }

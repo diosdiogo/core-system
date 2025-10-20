@@ -1,12 +1,28 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AppComponent } from './app.component';
+import { AuthService } from './services/auth.service';
+import { BehaviorSubject } from 'rxjs';
 
 describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [AppComponent]
-  }));
+  let mockAuthService: jasmine.SpyObj<AuthService>;
+
+  beforeEach(() => {
+    const authServiceSpy = jasmine.createSpyObj('AuthService', ['logout'], {
+      currentUser$: new BehaviorSubject(null)
+    });
+
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule, HttpClientTestingModule],
+      declarations: [AppComponent],
+      providers: [
+        { provide: AuthService, useValue: authServiceSpy }
+      ]
+    });
+
+    mockAuthService = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;
+  });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -22,8 +38,15 @@ describe('AppComponent', () => {
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.title = 'core-system';
+
+    // Simular um usuário logado
+    (mockAuthService.currentUser$ as BehaviorSubject<any>).next({ name: 'Tester', email: 'tester@email.com' });
+
     fixture.detectChanges();
+
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('core-system app is running!');
+    expect(compiled.querySelector('h1')?.textContent).toContain('core-system');
   });
 });

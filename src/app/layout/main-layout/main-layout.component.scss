@@ -1,0 +1,7 @@
+.content {
+  min-height: 100vh;
+
+  &.with-toolbar {
+    padding-top: 64px; // Altura do toolbar fixo
+  }
+}

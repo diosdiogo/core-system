@@ -1,0 +1,116 @@
+.app-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 64px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.menu-button {
+  margin-right: 16px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+
+  .logo {
+    height: 40px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.company-selector {
+  margin-right: 24px;
+  min-width: 200px;
+
+  ::ng-deep .mat-select-value {
+    color: inherit;
+  }
+
+  ::ng-deep .mat-select-arrow {
+    color: inherit;
+  }
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-name {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.user-button {
+  ::ng-deep .mat-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.user-menu {
+  ::ng-deep .mat-menu-content {
+    padding: 8px 0;
+  }
+
+  ::ng-deep .mat-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 40px;
+    line-height: 40px;
+
+    .mat-icon {
+      margin-right: 0;
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .app-toolbar {
+    padding: 0 8px;
+  }
+
+  .company-selector {
+    min-width: 150px;
+    margin-right: 16px;
+  }
+
+  .user-name {
+    display: none;
+  }
+
+  .logo-container .logo {
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .company-selector {
+    display: none;
+  }
+
+  .logo-container .logo {
+    height: 28px;
+  }
+}

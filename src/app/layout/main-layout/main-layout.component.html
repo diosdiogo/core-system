@@ -1,0 +1,9 @@
+<app-toolbar
+  *ngIf="showToolbar"
+  [isMenuOpen]="isMenuOpen"
+  (menuToggle)="onMenuToggle()"
+></app-toolbar>
+
+<div class="content" [class.with-toolbar]="showToolbar">
+  <router-outlet></router-outlet>
+</div>
