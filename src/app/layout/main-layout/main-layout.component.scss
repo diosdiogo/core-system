@@ -1,7 +1,34 @@
+.example-container {
+  height: 100vh;
+  width: 100%;
+}
+
+mat-drawer {
+  transition: width 0.3s ease-in-out;
+  overflow-x: hidden;
+
+  &.sidenav-expanded {
+    width: 280px;
+    padding: 16px;
+  }
+
+  &.sidenav-collapsed {
+    width: 76px;
+    padding: 8px 0 0 23px;
+  }
+}
+
+.main-content {
+  background-color: #ffffff;
+  margin: 75PX 20px 0 20px;
+}
+
 .content {
   min-height: 100vh;
+  padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
 
   &.with-toolbar {
-    padding-top: 64px; // Altura do toolbar fixo
+    // padding-top: 84px; // 64px toolbar + 20px padding
   }
 }

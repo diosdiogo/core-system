@@ -32,6 +32,8 @@ export class AppsComponent implements OnInit {
 
         // Se retornar apenas um app, redireciona para ele
         if (apps.length === 1) {
+          // Define o app como selecionado antes de navegar
+          this.appsService.setSelectedApp(apps[0]);
           this.router.navigate([apps[0].url]);
         }
       },
@@ -43,6 +45,8 @@ export class AppsComponent implements OnInit {
   }
 
   navigateToApp(app: IApps): void {
+    // Define o app como selecionado antes de navegar
+    this.appsService.setSelectedApp(app);
     this.router.navigate([app.url]);
   }
 }

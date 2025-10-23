@@ -1,0 +1,71 @@
+<mat-nav-list [class.collapsed]="isCollapsed">
+  <ng-container *ngFor="let item of menuItems">
+
+    <!-- Menu Expandido -->
+    <ng-container *ngIf="!isCollapsed">
+      <!-- Item sem submenu -->
+      <a *ngIf="!hasSubmenu(item)"
+         mat-list-item
+         [routerLink]="item.url"
+         routerLinkActive="active">
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        <span matListItemTitle>{{ item.name }}</span>
+      </a>
+
+      <!-- Item com submenu -->
+      <mat-expansion-panel *ngIf="hasSubmenu(item)" class="menu-expansion">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon class="menu-icon">{{ item.icon }}</mat-icon>
+            <span>{{ item.name }}</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-nav-list>
+          <a *ngFor="let subitem of item.submenu"
+             mat-list-item
+             [routerLink]="subitem.url"
+             routerLinkActive="active"
+             class="submenu-item">
+            <mat-icon matListItemIcon>{{ subitem.icon }}</mat-icon>
+            <span matListItemTitle>{{ subitem.name }}</span>
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </ng-container>
+
+    <!-- Menu Colapsado (apenas ícones) -->
+    <ng-container *ngIf="isCollapsed">
+      <!-- Item sem submenu -->
+      <a *ngIf="!hasSubmenu(item)"
+         mat-list-item
+         [routerLink]="item.url"
+         routerLinkActive="active"
+         [matTooltip]="item.name"
+         matTooltipPosition="right"
+         class="collapsed-item">
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+      </a>
+
+      <!-- Item com submenu - usando mat-menu -->
+      <button *ngIf="hasSubmenu(item)"
+              mat-list-item
+              [matMenuTriggerFor]="submenuMenu"
+              [matTooltip]="item.name"
+              matTooltipPosition="right"
+              class="collapsed-item">
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+      </button>
+
+      <mat-menu #submenuMenu="matMenu" class="collapsed-submenu">
+        <button mat-menu-item
+                *ngFor="let subitem of item.submenu"
+                [routerLink]="subitem.url">
+          <mat-icon>{{ subitem.icon }}</mat-icon>
+          <span>{{ subitem.name }}</span>
+        </button>
+      </mat-menu>
+    </ng-container>
+
+  </ng-container>
+</mat-nav-list>

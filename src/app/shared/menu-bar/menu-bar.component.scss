@@ -1,0 +1,77 @@
+mat-nav-list {
+  padding: 0;
+
+  &.collapsed {
+    width: 60px;
+
+    .mat-mdc-list-item {
+      padding: 0 !important;
+      justify-content: center;
+    }
+  }
+}
+
+.menu-expansion {
+  box-shadow: none !important;
+  margin: 0;
+
+  ::ng-deep .mat-expansion-panel-header {
+    padding: 0 16px;
+    height: 48px;
+  }
+
+  ::ng-deep .mat-expansion-panel-body {
+    padding: 0;
+  }
+}
+
+.menu-icon {
+  margin-right: 16px;
+}
+
+.submenu-item {
+  padding-left: 32px !important;
+}
+
+a[mat-list-item], button[mat-list-item] {
+  &.active {
+    background-color: rgba(0, 0, 0, 0.04);
+    color: var(--primary-color, #1976d2);
+
+    mat-icon {
+      color: var(--primary-color, #1976d2);
+    }
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}
+
+// Estilos para menu colapsado
+.collapsed-item {
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0 !important;
+  min-height: 48px;
+  border: none !important;
+
+  mat-icon {
+    margin: 0 !important;
+  }
+}
+
+// Menu suspenso quando colapsado
+::ng-deep .collapsed-submenu {
+  margin-left: 8px;
+
+  .mat-mdc-menu-item {
+    min-width: 200px;
+
+    mat-icon {
+      margin-right: 12px;
+    }
+  }
+}

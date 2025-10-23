@@ -21,7 +21,8 @@ export class ThemeService {
     logo: '/assets/logo-av.svg', // Logo ArteVisual
     favicon: '/assets/icon.png',
     logoToolbar: '/assets/logo-av.svg',
-    logoToolbarMin: '/assets/logo-av-min.svg', // Logo V verde
+    // logoToolbarMin: '/assets/logo-av-min.svg', // Logo V verde
+    logoToolbarMin: '/assets/logo-av.svg', // Logo V verde
     corToolbar: '#f5f5f5', // Cinza claro
     corMenuBar: '#ffffff',
     corTextoMenuBar: '#000000'

@@ -4,6 +4,19 @@
   (menuToggle)="onMenuToggle()"
 ></app-toolbar>
 
-<div class="content" [class.with-toolbar]="showToolbar">
-  <router-outlet></router-outlet>
-</div>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer
+              [class.sidenav-expanded]="isMenuOpen"
+              [class.sidenav-collapsed]="!isMenuOpen"
+              mode="side"
+              [opened]="true"
+              *ngIf="showToolbar"
+              style="margin-top: 64px;">
+    <app-menu-bar [menuItems]="menuItems" [isCollapsed]="!isMenuOpen"></app-menu-bar>
+  </mat-drawer>
+
+  <div class="content main-content" [class.with-toolbar]="showToolbar">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>

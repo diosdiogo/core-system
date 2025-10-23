@@ -9,6 +9,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { MenuBarComponent } from './menu-bar/menu-bar.component';
+import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/material/tree';
 
 @NgModule({
   declarations: [
@@ -23,10 +25,13 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     MatSelectModule,
     MatDividerModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    MenuBarComponent,
+    MatTreeModule
   ],
   exports: [
-    ToolbarComponent
+    ToolbarComponent,
+    MenuBarComponent
   ]
 })
 export class SharedModule { }
