@@ -5,7 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RouterModule, Routes } from '@angular/router';
 import { RootComponent } from './root/root/root.component';
-import { RootDashboardComponent } from './root/dashboard/root-dashboard/root-dashboard.component';
+import { RootDashboardComponent } from './root/dashboard/root-dashboard.component';
 
 const routes: Routes = [
   {

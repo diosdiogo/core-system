@@ -46,7 +46,7 @@ export class RootService {
 		});
 	}
 
-	getTotalNotasFiscaisFaturadas(periodo: Periodo = 'mensal'): Observable<number> {
+	getTotalNotasFiscaisFaturadas(periodo: String = 'monthly'): Observable<number> {
 		const base = periodo === 'mensal' ? 1 : periodo === 'semanal' ? 0.25 : 0.08;
 		return of(Math.round(620000 * base));
 	}

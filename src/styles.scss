@@ -1,9 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@use "tailwindcss";
+
 html, body {
   height: 100%;
   overflow: hidden;
   margin: 0;
   padding: 0;
+
+  --card: 0 0% 100%;
+  --border: 220 13% 88%;
 }
 
 body {
@@ -28,4 +33,14 @@ body {
 
 .mat-grid-tile {
   overflow: hidden !important;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
 }

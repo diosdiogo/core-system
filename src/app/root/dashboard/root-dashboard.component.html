@@ -1,0 +1,73 @@
+<!-- <mat-toolbar color="primary">
+  <span>📊 Dashboard</span>
+</mat-toolbar>
+
+  <p class="text-gray-500 pt-6 space-y-6">Visão geral do seu negócio</p>
+  <div class="p-6 space-y-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      @if (isLoading) {
+        @for (item of [1,2,3,4]; track item) {
+          <div class="bg-white p-4 rounded-xl shadow flex items-center justify-between">
+            <div class="flex-1">
+              <div class="skeleton skeleton-text-small mb-2"></div>
+              <div class="skeleton skeleton-text-large mb-2"></div>
+              <div class="skeleton skeleton-text-xs"></div>
+            </div>
+            <div class="skeleton skeleton-icon"></div>
+          </div>
+        }
+      }
+      
+      @if (!isLoading) {
+        @for (item of resumoArray; track item.titulo) {
+          <app-resumo-card [item]="item"></app-resumo-card>
+        }
+      }
+    </div>
+     bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent
+  </div> -->
+
+  <div class="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 p-6 md:p-8">
+    <div class="max-w-7xl mx-auto space-y-8">
+      <div class="animate-fade-in">
+        <h1 class="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text mb-2">
+          Dashboard
+        </h1>
+        <p class="text-muted-foreground">Visão geral do seu negócio</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        @if (!isLoading) {
+          @for (item of resumoArray; track item.titulo) {
+            <app-resumo-card [item]="item"></app-resumo-card>
+          }
+        }
+      </div>
+
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <h2 class="text-2xl font-semibold">Faturamento</h2>
+          <!-- <PeriodFilter selected={{periodo}} onChange={this.onPeriodoChange} /> -->
+          <div class="flex gap-2 animate-fade-in">
+            <app-button-filter 
+              label="Diário" 
+              [isActive]="periodo === 'daily'" 
+              (buttonClick)="onPeriodoChange($event)" />
+            <app-button-filter 
+              label="Semanal" 
+              [isActive]="periodo === 'weekly'" 
+              (buttonClick)="onPeriodoChange($event)" />
+            <app-button-filter 
+              label="Mensal" 
+              [isActive]="periodo === 'monthly'" 
+              (buttonClick)="onPeriodoChange($event)" />
+          </div>
+        </div>
+        <!-- <RevenueChart 
+          data={revenueData[period]} 
+          title={`Faturamento ${period === 'daily' ? 'Diário' : period === 'weekly' ? 'Semanal' : 'Mensal'}`}
+        /> -->
+      </div>
+
+    </div>
+  </div>
